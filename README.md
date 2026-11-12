@@ -1,5 +1,7 @@
 # CampusCompass 🎓
-
+<p align="center">
+  <img src="https://i.pinimg.com/736x/d9/83/70/d983707124eff1a4e4e4f22a847b2685.jpg" alt="Pixel Pioneers Banner" width="10%">
+</p>
 **Your university life, organized in one place.**
 
 CampusCompass is a student companion platform designed to help university students manage campus activities, academic deadlines, study schedules, and learning resources through a single dashboard.
