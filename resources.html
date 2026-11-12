@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resource Hub | CampusCompass</title>
+    <link rel="icon" type="image/jpeg" href="logo.jpg">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="dashboard-layout">
+
+        <aside class="sidebar">
+            <div class="sidebar-brand">
+                <h2>Campus<span>Compass</span></h2>
+                <p>Your campus, organized.</p>
+            </div>
+
+            <nav class="sidebar-nav" aria-label="Main navigation">
+                <a href="index.html" class="nav-link">▦ Dashboard</a>
+                <a href="events.html" class="nav-link">◷ Events</a>
+                <a href="deadlines.html" class="nav-link">✓ Deadlines</a>
+                <a href="study.html" class="nav-link">▤ Study Planner</a>
+                <a href="resources.html" class="nav-link active" aria-current="page">▣ Resources</a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <p>PIXEL PIONEERS</p>
+                <small>Built for students, by students.</small>
+            </div>
+        </aside>
+
+        <main class="main-content">
+
+            <header class="topbar">
+                <div>
+                    <p class="topbar-subtitle">STUDENT WORKSPACE</p>
+                    <h3>Campus Resource Hub</h3>
+                </div>
+
+                <div class="topbar-right">
+                    <div class="profile">
+                        <div class="avatar" id="student-avatar">A</div>
+                        <div>
+                            <strong id="student-name">Student</strong>
+                            <span>Campus Member</span>
+                            <button type="button" id="edit-profile-btn" class="edit-profile-btn">
+                                Edit Profile
+                            </button>
+                        </div>
+                    </div>
+                    <button id="logout-btn" class="logout-button">Logout</button>
+                </div>
+            </header>
+
+            <section class="resource-page">
+
+                <div class="resource-heading">
+                    <div>
+                        <p class="section-eyebrow">LEARN SOMETHING NEW</p>
+                        <h1>Your Learning Resource Hub</h1>
+                        <p>Discover useful websites, tutorials and tools for your studies.</p>
+                    </div>
+                </div>
+
+                <div class="resource-stats">
+
+                    <div class="resource-stat-card">
+                        <span>Total Resources</span>
+                        <h2 id="total-resources">0</h2>
+                    </div>
+
+                    <div class="resource-stat-card">
+                        <span>Categories</span>
+                        <h2 id="total-categories">0</h2>
+                    </div>
+
+                    <div class="resource-stat-card">
+                        <span>My Bookmarks</span>
+                        <h2 id="total-bookmarks">0</h2>
+                    </div>
+
+                </div>
+
+                <section class="resource-search-section">
+
+                    <div class="resource-search">
+                        <input type="search" id="resource-search" placeholder="Search resources, subjects or topics...">
+                    </div>
+
+                    <div class="resource-toolbar">
+                        <div class="resource-filters">
+                            <button class="resource-filter active" data-category="All">All</button>
+                            <button class="resource-filter" data-category="Programming">Programming</button>
+                            <button class="resource-filter" data-category="Mathematics">Mathematics</button>
+                            <button class="resource-filter" data-category="Physics">Physics</button>
+                            <button class="resource-filter" data-category="Web Development">Web Development</button>
+                            <button class="resource-filter" data-category="Tools">Tools</button>
+                        </div>
+
+                        <button id="show-bookmarks-btn" class="resource-bookmark-filter">
+                            ★ My Bookmarks
+                        </button>
+                    </div>
+
+                </section>
+
+                <section class="resource-library">
+
+                    <div class="resource-library-heading">
+                        <div>
+                            <h2>Explore Resources</h2>
+                            <p id="resource-results">Loading resources...</p>
+                        </div>
+
+                        <button id="open-resource-form">
+                            + Add Resource
+                        </button>
+                    </div>
+
+                    <div id="resource-container" class="resource-grid"></div>
+
+                    <div id="resource-empty" class="resource-empty hidden">
+                        <h3>No resources found</h3>
+                        <p>Try another search or category.</p>
+                    </div>
+
+                </section>
+
+                <section id="custom-resource-section" class="custom-resource-card hidden">
+
+                    <div class="custom-resource-heading">
+                        <div>
+                            <h2 id="resource-form-heading">Add Your Own Resource</h2>
+                            <p>Save a useful learning link to your personal library.</p>
+                        </div>
+
+                        <button type="button" id="close-resource-form" class="resource-close-btn">
+                            ✕
+                        </button>
+                    </div>
+
+                    <form id="resource-form">
+
+                        <input type="hidden" id="resource-id">
+
+                        <div class="resource-form-grid">
+
+                            <div class="resource-field">
+                                <label for="resource-title">Resource Name</label>
+                                <input type="text" id="resource-title" placeholder="e.g. JavaScript Tutorial"
+                                    maxlength="70" required>
+                            </div>
+
+                            <div class="resource-field">
+                                <label for="resource-category">Category</label>
+                                <select id="resource-category" required>
+                                    <option value="">Select category</option>
+                                    <option value="Programming">Programming</option>
+                                    <option value="Mathematics">Mathematics</option>
+                                    <option value="Physics">Physics</option>
+                                    <option value="Web Development">Web Development</option>
+                                    <option value="Tools">Tools</option>
+                                </select>
+                            </div>
+
+                            <div class="resource-field">
+                                <label for="resource-type">Resource Type</label>
+                                <select id="resource-type" required>
+                                    <option value="">Select type</option>
+                                    <option value="Documentation">Documentation</option>
+                                    <option value="Tutorial">Tutorial</option>
+                                    <option value="Course">Course</option>
+                                    <option value="Tool">Tool</option>
+                                    <option value="Practice">Practice</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                            </div>
+
+                            <div class="resource-field">
+                                <label for="resource-url">Website URL</label>
+                                <input type="url" id="resource-url" placeholder="https://example.com" required>
+                            </div>
+
+                        </div>
+
+                        <div class="resource-field">
+                            <label for="resource-description">Description</label>
+                            <textarea id="resource-description" rows="3" maxlength="200"
+                                placeholder="What is this resource useful for?" required></textarea>
+                        </div>
+
+                        <div class="resource-form-actions">
+                            <button type="submit" id="save-resource-btn">Save Resource</button>
+                            <button type="button" id="cancel-resource-form">Cancel</button>
+                        </div>
+
+                    </form>
+
+                </section>
+
+            </section>
+            <!-- EDIT PROFILE MODAL -->
+            <div id="edit-profile-modal" class="modal-overlay">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2>Edit Profile</h2>
+                        <button type="button" id="close-profile-modal" class="modal-close">
+                            &times;
+                        </button>
+                    </div>
+
+                    <form id="edit-profile-form">
+                        <label for="profile-full-name">Full Name</label>
+                        <input type="text" id="profile-full-name" placeholder="Enter your full name" required>
+
+                        <label for="profile-enrollment">Enrollment Number</label>
+                        <input type="text" id="profile-enrollment" readonly>
+
+                        <label for="profile-email">University Email</label>
+                        <input type="email" id="profile-email" readonly>
+
+                        <div id="profile-message"></div>
+
+                        <div class="modal-actions">
+                            <button type="button" id="cancel-profile-edit">Cancel</button>
+                            <button type="submit" id="save-profile-btn">Save Changes</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+    <script src="supabase.js"></script>
+    <script src="auth-guard.js"></script>
+    <script src="profile.js"></script>
+    <script src="resources.js"></script>
+</body>
+
+</html>

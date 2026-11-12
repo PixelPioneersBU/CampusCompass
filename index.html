@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CampusCompass | Student Dashboard</title>
+    <link rel="icon" type="image/jpeg" href="logo.jpg">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="dashboard-layout">
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-brand">
+                <h2>Campus<span>Compass</span></h2>
+                <p>Your campus, organized.</p>
+            </div>
+
+            <nav class="sidebar-nav" aria-label="Main navigation">
+                <a href="index.html" class="nav-link active" aria-current="page">▦ Dashboard</a>
+                <a href="events.html" class="nav-link">◷ Events</a>
+                <a href="deadlines.html" class="nav-link">✓ Deadlines</a>
+                <a href="study.html" class="nav-link">▤ Study Planner</a>
+                <a href="resources.html" class="nav-link">▣ Resources</a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <p>PIXEL PIONEERS</p>
+                <small>Built for students, by students.</small>
+            </div>
+        </aside>
+
+
+        <!-- Main Content -->
+        <main class="main-content">
+
+            <!-- Topbar -->
+            <header class="topbar">
+
+                <div>
+                    <p class="breadcrumb">Workspace / Dashboard</p>
+                    <h3>Dashboard</h3>
+                </div>
+
+                <div class="topbar-right">
+                    <div class="profile">
+                        <div class="avatar" id="student-avatar">A</div>
+                        <div>
+                            <strong id="student-name">Student</strong>
+                            <span>Campus Member</span>
+                            <button type="button" id="edit-profile-btn" class="edit-profile-btn">
+                                Edit Profile
+                            </button>
+                        </div>
+                    </div>
+                    <button id="logout-btn" class="logout-button">Logout</button>
+                </div>
+
+            </header>
+
+
+            <!-- Dashboard Content -->
+            <div class="content" id="dashboard">
+
+                <!-- Welcome Section -->
+                <section class="welcome-section">
+
+                    <div>
+                        <p class="welcome-label">YOUR CAMPUS COMPANION</p>
+
+                        <h1>Welcome back, <span id="welcome-name">Student</span>! 👋</h1>
+
+                        <p>
+                            Stay organized, manage your academics,
+                            and never miss an important campus event.
+                        </p>
+                    </div>
+
+                    <div class="date-box">
+                        <span>TODAY</span>
+                        <h3 id="current-date">Loading...</h3>
+                    </div>
+
+                </section>
+
+
+                <!-- Statistics -->
+                <section class="stats-grid">
+
+                    <div class="stat-card">
+                        <div class="stat-icon cyan">▦</div>
+                        <p>Upcoming Events</p>
+                        <h2 id="event-count">0</h2>
+                        <span>Events available</span>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon purple">▤</div>
+                        <p>Pending Tasks</p>
+                        <h2 id="task-count">0</h2>
+                        <span>Tasks to complete</span>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon green">◷</div>
+                        <p>Study Sessions</p>
+                        <h2 id="study-count">0</h2>
+                        <span>Planned sessions</span>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon orange">✓</div>
+                        <p>Completed Tasks</p>
+                        <h2 id="completed-count">0</h2>
+                        <span>Tasks completed</span>
+                    </div>
+
+                </section>
+
+
+                <!-- Dashboard Sections -->
+                <div class="dashboard-grid">
+
+                    <!-- Events -->
+                    <section class="panel" id="events">
+
+                        <div class="panel-header">
+                            <div>
+                                <h2>Upcoming Events</h2>
+                                <p>What's happening around campus?</p>
+                            </div>
+
+                            <a href="events.html">View all →</a>
+                        </div>
+
+                        <div id="events-list" class="event-list"></div>
+
+                    </section>
+
+
+                    <!-- Deadlines -->
+                    <section class="panel" id="deadlines">
+
+                        <div class="panel-header">
+                            <div>
+                                <h2>Recent Deadlines</h2>
+                                <p>Keep track of your assignments.</p>
+                            </div>
+
+                            <a href="deadlines.html">View all →</a>
+                        </div>
+
+                        <div id="deadlines-list" class="deadline-list"></div>
+
+                    </section>
+
+                </div>
+
+
+                <!-- Bottom Section -->
+                <section class="quick-access" id="planner">
+
+                    <div>
+                        <h2>Stay ahead of your schedule.</h2>
+                        <p>Plan your study sessions and make every day productive.</p>
+                    </div>
+
+                    <a href="study.html" class="primary-button">
+                        Open Study Planner →
+                    </a>
+
+                </section>
+
+            </div>
+
+        </main>
+
+    </div>
+
+    <!-- EDIT PROFILE MODAL -->
+    <div id="edit-profile-modal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Edit Profile</h2>
+                <button type="button" id="close-profile-modal" class="modal-close">
+                    &times;
+                </button>
+            </div>
+
+            <form id="edit-profile-form">
+
+                <label for="profile-full-name">Full Name</label>
+                <input type="text" id="profile-full-name" placeholder="Enter your full name" required>
+
+                <label for="profile-enrollment">Enrollment Number</label>
+                <input type="text" id="profile-enrollment" readonly>
+
+                <label for="profile-email">University Email</label>
+                <input type="email" id="profile-email" readonly>
+
+                <div id="profile-message"></div>
+
+                <div class="modal-actions">
+                    <button type="button" id="cancel-profile-edit">
+                        Cancel
+                    </button>
+
+                    <button type="submit" id="save-profile-btn">
+                        Save Changes
+                    </button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+    <script src="supabase.js"></script>
+    <script src="auth-guard.js"></script>
+    <script src="profile.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>

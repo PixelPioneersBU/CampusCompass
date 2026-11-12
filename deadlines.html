@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deadline Tracker | CampusCompass</title>
+    <link rel="icon" type="image/jpeg" href="logo.jpg">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="dashboard-layout">
+
+        <aside class="sidebar">
+            <div class="sidebar-brand">
+                <h2>Campus<span>Compass</span></h2>
+                <p>Your campus, organized.</p>
+            </div>
+
+            <nav class="sidebar-nav" aria-label="Main navigation">
+                <a href="index.html" class="nav-link">▦ Dashboard</a>
+                <a href="events.html" class="nav-link">◷ Events</a>
+                <a href="deadlines.html" class="nav-link active" aria-current="page">✓ Deadlines</a>
+                <a href="study.html" class="nav-link">▤ Study Planner</a>
+                <a href="resources.html" class="nav-link">▣ Resources</a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <p>PIXEL PIONEERS</p>
+                <small>Built for students, by students.</small>
+            </div>
+        </aside>
+
+        <main class="main-content">
+
+            <header class="topbar">
+                <div>
+                    <p class="topbar-subtitle">STUDENT WORKSPACE</p>
+                    <h3>Deadline Tracker</h3>
+                </div>
+                <div class="topbar-right">
+                    <div class="profile">
+                        <div class="avatar" id="student-avatar">A</div>
+                        <div>
+                            <strong id="student-name">Student</strong>
+                            <span>Campus Member</span>
+                            <button type="button" id="edit-profile-btn" class="edit-profile-btn">
+                                Edit Profile
+                            </button>
+                        </div>
+                    </div>
+                    <button id="logout-btn" class="logout-button">Logout</button>
+                </div>
+            </header>
+
+            <section class="deadline-page">
+
+                <div class="deadline-heading">
+                    <div>
+                        <p class="section-eyebrow">STAY ON TRACK</p>
+                        <h1>Manage Your Deadlines</h1>
+                        <p>Keep assignments, exams and projects under control.</p>
+                    </div>
+                </div>
+
+                <div class="deadline-stats">
+                    <div class="deadline-stat-card">
+                        <span>Total Tasks</span>
+                        <h2 id="total-tasks">0</h2>
+                    </div>
+                    <div class="deadline-stat-card">
+                        <span>Pending</span>
+                        <h2 id="pending-tasks">0</h2>
+                    </div>
+                    <div class="deadline-stat-card">
+                        <span>Completed</span>
+                        <h2 id="completed-tasks">0</h2>
+                    </div>
+                    <div class="deadline-stat-card">
+                        <span>Overdue</span>
+                        <h2 id="overdue-tasks">0</h2>
+                    </div>
+                </div>
+
+                <div class="deadline-content">
+
+                    <section class="deadline-form-card">
+                        <h2 id="form-heading">Add a New Task</h2>
+                        <p>Add an academic task and set its due date.</p>
+
+                        <form id="deadline-form">
+
+                            <input type="hidden" id="task-id">
+
+                            <div class="form-field">
+                                <label for="task-title">Task Title</label>
+                                <input type="text" id="task-title" placeholder="e.g. Calculus Assignment" required
+                                    maxlength="70">
+                            </div>
+
+                            <div class="form-field">
+                                <label for="task-subject">Subject / Category</label>
+                                <select id="task-subject" required>
+                                    <option value="">Select category</option>
+                                    <option value="Assignment">Assignment</option>
+                                    <option value="Quiz">Quiz</option>
+                                    <option value="Exam">Exam</option>
+                                    <option value="Project">Project</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                            </div>
+
+                            <div class="form-field">
+                                <label for="task-date">Due Date</label>
+                                <input type="date" id="task-date" required>
+                            </div>
+
+                            <div class="form-field">
+                                <label for="task-description">Description</label>
+                                <textarea id="task-description" rows="3" placeholder="Add some details (optional)"
+                                    maxlength="250"></textarea>
+                            </div>
+
+                            <div class="deadline-form-actions">
+                                <button type="submit" id="save-task-btn">
+                                    Add Task
+                                </button>
+                                <button type="button" id="cancel-edit-btn" class="cancel-btn hidden">
+                                    Cancel
+                                </button>
+                            </div>
+
+                        </form>
+                    </section>
+
+                    <section class="deadline-list-section">
+
+                        <div class="deadline-list-heading">
+                            <div>
+                                <h2>Your Tasks</h2>
+                                <p>Track your academic progress.</p>
+                            </div>
+
+                            <select id="task-sort" aria-label="Sort tasks">
+                                <option value="date-asc">Nearest deadline</option>
+                                <option value="date-desc">Farthest deadline</option>
+                                <option value="title">Task name</option>
+                            </select>
+                        </div>
+
+                        <div class="deadline-filters">
+                            <button class="deadline-filter active" data-filter="all">All</button>
+                            <button class="deadline-filter" data-filter="pending">Pending</button>
+                            <button class="deadline-filter" data-filter="completed">Completed</button>
+                            <button class="deadline-filter" data-filter="overdue">Overdue</button>
+                        </div>
+
+                        <p class="deadline-results" id="deadline-results"></p>
+
+                        <div id="deadline-container" class="deadline-container"></div>
+
+                        <div id="deadline-empty" class="deadline-empty hidden">
+                            <h3>No tasks found</h3>
+                            <p>Add a task or select another filter.</p>
+                        </div>
+
+                    </section>
+
+                </div>
+
+            </section>
+            <!-- EDIT PROFILE MODAL -->
+            <div id="edit-profile-modal" class="modal-overlay">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2>Edit Profile</h2>
+                        <button type="button" id="close-profile-modal" class="modal-close">
+                            &times;
+                        </button>
+                    </div>
+
+                    <form id="edit-profile-form">
+                        <label for="profile-full-name">Full Name</label>
+                        <input type="text" id="profile-full-name" placeholder="Enter your full name" required>
+
+                        <label for="profile-enrollment">Enrollment Number</label>
+                        <input type="text" id="profile-enrollment" readonly>
+
+                        <label for="profile-email">University Email</label>
+                        <input type="email" id="profile-email" readonly>
+
+                        <div id="profile-message"></div>
+
+                        <div class="modal-actions">
+                            <button type="button" id="cancel-profile-edit">Cancel</button>
+                            <button type="submit" id="save-profile-btn">Save Changes</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </main>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+    <script src="supabase.js"></script>
+    <script src="auth-guard.js"></script>
+    <script src="profile.js"></script>
+    <script src="deadlines.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CampusCompass | Campus Events</title>
+    <link rel="icon" type="image/jpeg" href="logo.jpg">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="dashboard-layout">
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-brand">
+                <h2>Campus<span>Compass</span></h2>
+                <p>Your campus, organized.</p>
+            </div>
+
+            <nav class="sidebar-nav" aria-label="Main navigation">
+                <a href="index.html" class="nav-link">▦ Dashboard</a>
+                <a href="events.html" class="nav-link active" aria-current="page">◷ Events</a>
+                <a href="deadlines.html" class="nav-link">✓ Deadlines</a>
+                <a href="study.html" class="nav-link">▤ Study Planner</a>
+                <a href="resources.html" class="nav-link">▣ Resources</a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <p>PIXEL PIONEERS</p>
+                <small>Built for students, by students.</small>
+            </div>
+        </aside>
+
+
+        <!-- Main Content -->
+        <main class="main-content">
+
+            <header class="topbar">
+
+                <div>
+                    <p class="breadcrumb">Workspace / Events</p>
+                    <h3>Campus Events</h3>
+                </div>
+
+                <div class="topbar-right">
+                    <div class="profile">
+                        <div class="avatar" id="student-avatar">A</div>
+                        <div>
+                            <strong id="student-name">Student</strong>
+                            <span>Campus Member</span>
+                            <button type="button" id="edit-profile-btn" class="edit-profile-btn">
+                                Edit Profile
+                            </button>
+                        </div>
+                    </div>
+                    <button id="logout-btn" class="logout-button">Logout</button>
+                </div>
+
+            </header>
+
+
+            <div class="content">
+
+                <!-- Page Heading -->
+                <section class="events-heading">
+
+                    <div>
+                        <p class="welcome-label">EXPLORE YOUR CAMPUS</p>
+
+                        <h1>Discover Campus Events</h1>
+
+                        <p>
+                            Find workshops, competitions, cultural activities,
+                            and exciting opportunities around campus.
+                        </p>
+                    </div>
+
+                </section>
+
+
+                <!-- Search -->
+                <section class="event-controls">
+
+                    <div class="search-box">
+                        <span>⌕</span>
+
+                        <input type="text" id="event-search" placeholder="Search events...">
+                    </div>
+
+                    <button id="bookmark-filter" class="filter-button">
+                        ♡ Saved Events
+                    </button>
+
+                </section>
+
+
+                <!-- Category Filters -->
+                <section class="category-filters">
+
+                    <button class="category-btn active" data-category="All">
+                        All Events
+                    </button>
+
+                    <button class="category-btn" data-category="Technical">
+                        Technical
+                    </button>
+
+                    <button class="category-btn" data-category="Cultural">
+                        Cultural
+                    </button>
+
+                    <button class="category-btn" data-category="Sports">
+                        Sports
+                    </button>
+
+                    <button class="category-btn" data-category="Workshop">
+                        Workshops
+                    </button>
+
+                </section>
+
+
+                <!-- Event Count -->
+                <div class="results-heading">
+                    <h2>Explore Opportunities</h2>
+
+                    <span id="results-count">0 events</span>
+                </div>
+
+
+                <!-- Event Cards -->
+                <section id="events-container" class="events-grid">
+                </section>
+
+
+                <!-- Empty State -->
+                <div id="empty-state" class="empty-state hidden">
+
+                    <h2>No events found</h2>
+
+                    <p>
+                        Try another search or select a different category.
+                    </p>
+
+                </div>
+
+            </div>
+
+            <!-- EDIT PROFILE MODAL -->
+            <div id="edit-profile-modal" class="modal-overlay">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2>Edit Profile</h2>
+                        <button type="button" id="close-profile-modal" class="modal-close">
+                            &times;
+                        </button>
+                    </div>
+
+                    <form id="edit-profile-form">
+
+                        <label for="profile-full-name">Full Name</label>
+                        <input type="text" id="profile-full-name" placeholder="Enter your full name" required>
+
+                        <label for="profile-enrollment">Enrollment Number</label>
+                        <input type="text" id="profile-enrollment" readonly>
+
+                        <label for="profile-email">University Email</label>
+                        <input type="email" id="profile-email" readonly>
+
+                        <div id="profile-message"></div>
+
+                        <div class="modal-actions">
+                            <button type="button" id="cancel-profile-edit">
+                                Cancel
+                            </button>
+
+                            <button type="submit" id="save-profile-btn">
+                                Save Changes
+                            </button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+
+        </main>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+    <script src="supabase.js"></script>
+    <script src="auth-guard.js"></script>
+    <script src="profile.js"></script>
+    <script src="events.js"></script>
+
+</body>
+
+</html>

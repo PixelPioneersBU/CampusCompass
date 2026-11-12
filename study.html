@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Study Planner | CampusCompass</title>
+    <link rel="icon" type="image/jpeg" href="logo.jpg">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="dashboard-layout">
+
+        <aside class="sidebar">
+            <div class="sidebar-brand">
+                <h2>Campus<span>Compass</span></h2>
+                <p>Your campus, organized.</p>
+            </div>
+
+            <nav class="sidebar-nav" aria-label="Main navigation">
+                <a href="index.html" class="nav-link">▦ Dashboard</a>
+                <a href="events.html" class="nav-link">◷ Events</a>
+                <a href="deadlines.html" class="nav-link">✓ Deadlines</a>
+                <a href="study.html" class="nav-link active" aria-current="page">▤ Study Planner</a>
+                <a href="resources.html" class="nav-link">▣ Resources</a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <p>PIXEL PIONEERS</p>
+                <small>Built for students, by students.</small>
+            </div>
+        </aside>
+
+        <main class="main-content">
+
+            <header class="topbar">
+                <div>
+                    <p class="topbar-subtitle">STUDENT WORKSPACE</p>
+                    <h3>Study Planner</h3>
+                </div>
+
+                <div class="topbar-right">
+                    <div class="profile">
+                        <div class="avatar" id="student-avatar">A</div>
+                        <div>
+                            <strong id="student-name">Student</strong>
+                            <span>Campus Member</span>
+                            <button type="button" id="edit-profile-btn" class="edit-profile-btn">
+                                Edit Profile
+                            </button>
+                        </div>
+                    </div>
+                    <button id="logout-btn" class="logout-button">Logout</button>
+                </div>
+            </header>
+
+            <section class="study-page">
+
+                <div class="study-heading">
+                    <div>
+                        <p class="section-eyebrow">PLAN. STUDY. IMPROVE.</p>
+                        <h1>Your Personal Study Planner</h1>
+                        <p>Organize your study sessions and keep track of your progress.</p>
+                    </div>
+                </div>
+
+                <div class="study-stats">
+
+                    <div class="study-stat-card">
+                        <span>Total Sessions</span>
+                        <h2 id="total-sessions">0</h2>
+                    </div>
+
+                    <div class="study-stat-card">
+                        <span>Planned Hours</span>
+                        <h2 id="planned-hours">0</h2>
+                    </div>
+
+                    <div class="study-stat-card">
+                        <span>Completed Hours</span>
+                        <h2 id="completed-hours">0</h2>
+                    </div>
+
+                    <div class="study-stat-card">
+                        <span>Completion Rate</span>
+                        <h2 id="completion-rate">0%</h2>
+                    </div>
+
+                </div>
+
+                <div class="study-content">
+
+                    <section class="study-form-card">
+
+                        <h2 id="study-form-heading">Plan a Study Session</h2>
+                        <p>Enter the details of your next study session.</p>
+
+                        <form id="study-form">
+
+                            <input type="hidden" id="study-session-id">
+
+                            <div class="study-field">
+                                <label for="study-title">Session / Topic</label>
+                                <input type="text" id="study-title" placeholder="e.g. Boolean Algebra Revision"
+                                    maxlength="70" required>
+                            </div>
+
+                            <div class="study-field">
+                                <label for="study-subject">Subject</label>
+                                <select id="study-subject" required>
+                                    <option value="">Select subject</option>
+                                    <option value="Digital Design">Digital Design</option>
+                                    <option value="Calculus">Calculus</option>
+                                    <option value="Physics">Physics</option>
+                                    <option value="Python Programming">Python Programming</option>
+                                    <option value="Web Development">Web Development</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                            </div>
+
+                            <div class="study-field">
+                                <label for="study-date">Study Date</label>
+                                <input type="date" id="study-date" required>
+                            </div>
+
+                            <div class="study-field">
+                                <label for="study-time">Start Time</label>
+                                <input type="time" id="study-time" required>
+                            </div>
+
+                            <div class="study-field">
+                                <label for="study-duration">Duration (minutes)</label>
+                                <select id="study-duration" required>
+                                    <option value="">Select duration</option>
+                                    <option value="25">25 minutes</option>
+                                    <option value="30">30 minutes</option>
+                                    <option value="45">45 minutes</option>
+                                    <option value="60">1 hour</option>
+                                    <option value="90">1.5 hours</option>
+                                    <option value="120">2 hours</option>
+                                    <option value="150">2.5 hours</option>
+                                    <option value="180">3 hours</option>
+                                </select>
+                            </div>
+
+                            <div class="study-field">
+                                <label for="study-notes">Notes (optional)</label>
+                                <textarea id="study-notes" rows="3" maxlength="250"
+                                    placeholder="What do you plan to cover?"></textarea>
+                            </div>
+
+                            <div class="study-form-actions">
+                                <button type="submit" id="save-study-btn">
+                                    Add Session
+                                </button>
+
+                                <button type="button" id="cancel-study-edit" class="study-cancel-btn hidden">
+                                    Cancel
+                                </button>
+                            </div>
+
+                        </form>
+                    </section>
+
+                    <section class="study-list-section">
+
+                        <div class="study-list-heading">
+                            <div>
+                                <h2>Your Study Sessions</h2>
+                                <p>Review and manage your study plan.</p>
+                            </div>
+
+                            <select id="study-sort" aria-label="Sort study sessions">
+                                <option value="date-asc">Earliest first</option>
+                                <option value="date-desc">Latest first</option>
+                                <option value="subject">Subject name</option>
+                            </select>
+                        </div>
+
+                        <div class="study-filters">
+                            <button class="study-filter active" data-filter="all">All</button>
+                            <button class="study-filter" data-filter="upcoming">Upcoming</button>
+                            <button class="study-filter" data-filter="completed">Completed</button>
+                        </div>
+
+                        <p id="study-results" class="study-results"></p>
+
+                        <div id="study-container" class="study-container"></div>
+
+                        <div id="study-empty" class="study-empty hidden">
+                            <h3>No study sessions found</h3>
+                            <p>Add a session or choose another filter.</p>
+                        </div>
+
+                    </section>
+
+                </div>
+
+            </section>
+            <!-- EDIT PROFILE MODAL -->
+            <div id="edit-profile-modal" class="modal-overlay">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2>Edit Profile</h2>
+                        <button type="button" id="close-profile-modal" class="modal-close">
+                            &times;
+                        </button>
+                    </div>
+
+                    <form id="edit-profile-form">
+                        <label for="profile-full-name">Full Name</label>
+                        <input type="text" id="profile-full-name" placeholder="Enter your full name" required>
+
+                        <label for="profile-enrollment">Enrollment Number</label>
+                        <input type="text" id="profile-enrollment" readonly>
+
+                        <label for="profile-email">University Email</label>
+                        <input type="email" id="profile-email" readonly>
+
+                        <div id="profile-message"></div>
+
+                        <div class="modal-actions">
+                            <button type="button" id="cancel-profile-edit">Cancel</button>
+                            <button type="submit" id="save-profile-btn">Save Changes</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+    <script src="supabase.js"></script>
+    <script src="auth-guard.js"></script>
+    <script src="profile.js"></script>
+    <script src="study.js"></script>
+</body>
+
+</html>
